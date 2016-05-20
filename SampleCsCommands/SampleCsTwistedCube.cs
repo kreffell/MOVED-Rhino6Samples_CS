@@ -28,24 +28,24 @@ namespace SampleCsCommands
     /// This example demonstrates how to construct a Brep
     /// with the topology shown below.
     ///
-    ///             H-------e6-------G
-    ///            /                /|
-    ///           / |              / |
-    ///          /  e7            /  e5
-    ///         /   |            /   |
-    ///        /                e10  |
-    ///       /     |          /     |
-    ///      e11    E- - e4- -/- - - F
-    ///     /                /      /
-    ///    /      /         /      /
-    ///   D---------e2-----C      e9
-    ///   |     /          |     /
-    ///   |    e8          |    /
-    ///   e3  /            e1  /
-    ///   |                |  /
-    ///   | /              | /
-    ///   |                |/
-    ///   A-------e0-------B
+    ///            H-------e6-------G
+    ///           /                /|
+    ///          / |              / |
+    ///         /  e7            /  e5
+    ///        /   |            /   |
+    ///       /                e10  |
+    ///      /     |          /     |
+    ///     e11    E- - e4- -/- - - F
+    ///    /                /      /
+    ///   /      /         /      /
+    ///  D---------e2-----C      e9
+    ///  |     /          |     /
+    ///  |    e8          |    /
+    ///  e3  /            e1  /
+    ///  |                |  /
+    ///  | /              | /
+    ///  |                |/
+    ///  A-------e0-------B
     ///
     /// </summary>
     /// <returns>A Brep if successful, null otherwise</returns>
@@ -189,28 +189,28 @@ namespace SampleCsCommands
       switch (side)
       {
         case 0: // SW to SE
-          start.X = domain_u.Min;
-          start.Y = domain_v.Min;
-          end.X = domain_u.Max;
-          end.Y = domain_v.Min;
+          start.X = domain_u.T0;
+          start.Y = domain_v.T0;
+          end.X = domain_u.T1;
+          end.Y = domain_v.T0;
           break;
         case 1: // SE to NE
-          start.X = domain_u.Max;
-          start.Y = domain_v.Min;
-          end.X = domain_u.Max;
-          end.Y = domain_v.Max;
+          start.X = domain_u.T1;
+          start.Y = domain_v.T0;
+          end.X = domain_u.T1;
+          end.Y = domain_v.T1;
           break;
         case 2: // NE to NW
-          start.X = domain_u.Max;
-          start.Y = domain_v.Max;
-          end.X = domain_u.Min;
-          end.Y = domain_v.Max;
+          start.X = domain_u.T1;
+          start.Y = domain_v.T1;
+          end.X = domain_u.T0;
+          end.Y = domain_v.T1;
           break;
         case 3: // NW to SW
-          start.X = domain_u.Min;
-          start.Y = domain_v.Max;
-          end.X = domain_u.Min;
-          end.Y = domain_v.Min;
+          start.X = domain_u.T0;
+          start.Y = domain_v.T1;
+          end.X = domain_u.T0;
+          end.Y = domain_v.T0;
           break;
         default:
           return null;

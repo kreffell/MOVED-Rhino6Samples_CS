@@ -27,15 +27,15 @@ namespace SampleCsCommands
     /// This example demonstrates how to construct a ON_Brep
     /// with the topology shown below.
     ///
-    ///   E-------C--------D
-    ///    |       /\       | 
-    ///    |      /  \      |
-    ///    |     /    \     |
-    ///    |    e2      e1  |     
-    ///    |   /        \   |    
-    ///    |  /          \  |  
-    ///    | /            \ |  
-    ///    A-----e0-------->B
+    ///  E-------C--------D
+    ///  |       /\       | 
+    ///  |      /  \      |
+    ///  |     /    \     |
+    ///  |    e2      e1  |     
+    ///  |   /        \   |    
+    ///  |  /          \  |  
+    ///  | /            \ |  
+    ///  A-----e0-------->B
     ///
     ///  Things need to be defined in a valid brep:
     ///   1- Vertices
@@ -60,7 +60,7 @@ namespace SampleCsCommands
       // Create the Brep
       var brep = new Brep();
 
-      // Ceate three vertices located at the three points
+      // Create three vertices located at the three points
       for (var vi = 0; vi < 3; vi++)
       {
         // This simple example is exact - for models with
@@ -106,7 +106,7 @@ namespace SampleCsCommands
       // Validate the results
       if (!brep.IsValid)
       {
-        RhinoApp.Write("Trimmed b-rep face is not valid.");
+        RhinoApp.Write("Trimmed Brep face is not valid.");
         return null;
       }
 
@@ -153,22 +153,22 @@ namespace SampleCsCommands
       switch (side)
       {
         case 0:  // SW to SE
-          start.X = domain_u.Min;
-          start.Y = domain_v.Min;
-          end.X = domain_u.Max;
-          end.Y = domain_v.Min;
+          start.X = domain_u.T0;
+          start.Y = domain_v.T0;
+          end.X = domain_u.T1;
+          end.Y = domain_v.T0;
           break;
         case 1: // diagonal
-          start.X = domain_u.Max;
-          start.Y = domain_v.Min;
-          end.X = (domain_u.Min + domain_u.Max) / 2;
-          end.Y = domain_v.Max;
+          start.X = domain_u.T1;
+          start.Y = domain_v.T0;
+          end.X = (domain_u.T0 + domain_u.T1) / 2;
+          end.Y = domain_v.T1;
           break;
         case 2: // diagonal
-          start.X = (domain_u.Min + domain_u.Max) / 2;
-          start.Y = domain_v.Max;
-          end.X = domain_u.Min;
-          end.Y = domain_v.Min;
+          start.X = (domain_u.T0 + domain_u.T1) / 2;
+          start.Y = domain_v.T1;
+          end.X = domain_u.T0;
+          end.Y = domain_v.T0;
           break;
         default:
           return null;
@@ -340,11 +340,11 @@ namespace SampleCsCommands
         var trim = brep.Trims.Add(brep.Edges[ei], reverse, loop, c2i);
         trim.IsoStatus = iso;
 
-        // This one b-rep face, so all trims are boundary ones.
+        // This one Brep face, so all trims are boundary ones.
         trim.TrimType = BrepTrimType.Boundary;
 
         // This simple example is exact - for models with
-        //non-exact data, set tolerance as explained in
+        // non-exact data, set tolerance as explained in
         // definition of BrepTrim.
         trim.SetTolerances(0.0, 0.0);
       }
