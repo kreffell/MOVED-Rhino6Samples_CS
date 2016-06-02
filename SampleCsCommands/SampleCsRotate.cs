@@ -16,7 +16,7 @@ namespace SampleCsCommands
   /// </summary>
   internal class GetReferencePoint : GetPoint
   {
-    private Point3d m_base_point;
+    private readonly Point3d m_base_point;
     private Circle m_circle;
 
     public GetReferencePoint(Point3d basePoint)
