@@ -3,13 +3,13 @@ using Eto.Drawing;
 using Eto.Forms;
 using Rhino.UI;
 
-namespace SampleEto.Views
+namespace SampleCsEto.Views
 {
-  class SampleEtoOptionsPage : OptionsDialogPage
+  class SampleCsEtoOptionsPage : OptionsDialogPage
   {
-    private SampleEtoOptionsPageControl m_page_control;
+    private SampleCsEtoOptionsPageControl m_page_control;
 
-    public SampleEtoOptionsPage()
+    public SampleCsEtoOptionsPage()
       : base("Sample")
     {
     }
@@ -34,14 +34,14 @@ namespace SampleEto.Views
     {
       get
       {
-        return (m_page_control ?? (m_page_control = new SampleEtoOptionsPageControl()));
+        return (m_page_control ?? (m_page_control = new SampleCsEtoOptionsPageControl()));
       }
     }
   }
 
-  class SampleEtoOptionsPageControl : Panel
+  class SampleCsEtoOptionsPageControl : Panel
   {
-    public SampleEtoOptionsPageControl()
+    public SampleCsEtoOptionsPageControl()
     {
       var hello_button = new Button { Text = "Hello" };
       hello_button.Click += (sender, e) => OnHelloButton();
@@ -54,19 +54,19 @@ namespace SampleEto.Views
 
     public bool OnActivate(bool active)
     {
-      Debug.WriteLine("SampleEtoOptionsDialogPage.OnActive(" + active + ")");
+      Debug.WriteLine("SampleCsEtoOptionsDialogPage.OnActive(" + active + ")");
       return true;
     }
 
     public bool OnApply()
     {
-      Debug.WriteLine("SampleEtoOptionsDialogPage.OnApply()");
+      Debug.WriteLine("SampleCsEtoOptionsDialogPage.OnApply()");
       return true;
     }
 
     public void OnCancel()
     {
-      Debug.WriteLine("SampleEtoOptionsDialogPage.OnCancel()");
+      Debug.WriteLine("SampleCsEtoOptionsDialogPage.OnCancel()");
     }
 
     protected void OnHelloButton()

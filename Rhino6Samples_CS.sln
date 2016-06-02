@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsCommands", "SampleCsCommands\SampleCsCommands.csproj", "{C1498326-89AB-48B0-A148-290C169CAA68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEto", "SampleEto\SampleEto.csproj", "{CD962975-5E0A-4BB7-AF01-ABD4A9E18AAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsEto", "SampleCsEto\SampleCsEto.csproj", "{CD962975-5E0A-4BB7-AF01-ABD4A9E18AAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

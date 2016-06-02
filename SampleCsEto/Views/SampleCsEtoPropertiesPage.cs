@@ -4,11 +4,11 @@ using Eto.Forms;
 using Rhino.DocObjects;
 using Rhino.UI;
 
-namespace SampleEto.Views
+namespace SampleCsEto.Views
 {
-  class SampleEtoPropertiesPage : ObjectPropertiesPage
+  class SampleCsEtoPropertiesPage : ObjectPropertiesPage
   {
-    private SampleEtoPropertiesPageControl m_page_control;
+    private SampleCsEtoPropertiesPageControl m_page_control;
 
     public override string EnglishPageTitle
     {
@@ -17,20 +17,20 @@ namespace SampleEto.Views
 
     public override System.Drawing.Icon Icon
     {
-      get { return Properties.Resources.SampleEtoPanel; }
+      get { return Properties.Resources.SampleCsEtoPanel; }
     }
 
     public override object PageControl
     {
       get
       {
-        return (m_page_control ?? (m_page_control = new SampleEtoPropertiesPageControl()));
+        return (m_page_control ?? (m_page_control = new SampleCsEtoPropertiesPageControl()));
       }
     }
 
     public override bool ShouldDisplay(RhinoObject rhObj)
     {
-      Debug.WriteLine("SampleEtoPropertiesPage.ShouldDisplay(" + rhObj + ")");
+      Debug.WriteLine("SampleCsEtoPropertiesPage.ShouldDisplay(" + rhObj + ")");
       return true;
     }
 
@@ -41,9 +41,9 @@ namespace SampleEto.Views
     }
   }
 
-  class SampleEtoPropertiesPageControl : Panel
+  class SampleCsEtoPropertiesPageControl : Panel
   {
-    public SampleEtoPropertiesPageControl()
+    public SampleCsEtoPropertiesPageControl()
     {
       var hello_button = new Button { Text = "Hello" };
       hello_button.Click += (sender, e) => OnHelloButton();
@@ -56,7 +56,7 @@ namespace SampleEto.Views
 
     public void InitializeControls(RhinoObject rhObj)
     {
-      Debug.WriteLine("SampleEtoPropertiesPage.InitializeControls(" + rhObj + ")");
+      Debug.WriteLine("SampleCsEtoPropertiesPage.InitializeControls(" + rhObj + ")");
     }
 
     protected void OnHelloButton()

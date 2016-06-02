@@ -1,39 +1,38 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 
-namespace SampleEto.Views
+namespace SampleCsEto.Views
 {
-  class SampleEtoModalDialog : Dialog<DialogResult>
+  class SampleCsEtoModelessForm : Form
   {
-    public SampleEtoModalDialog()
+    public SampleCsEtoModelessForm()
     {
+      Maximizable = false;
+      Minimizable = false;
       Padding = new Padding(5);
       Resizable = false;
-      Result = DialogResult.Cancel;
+      ShowInTaskbar = false;
       Title = GetType().Name;
       WindowStyle = WindowStyle.Default;
 
       var hello_button = new Button { Text = "Hello" };
       hello_button.Click += (sender, e) => OnHelloButton();
 
-      DefaultButton = new Button { Text = "OK" };
-      DefaultButton.Click += (sender, e) => Close(DialogResult.Ok);
+      var close_button = new Button { Text = "OK" };
+      close_button.Click += (sender, e) => Close();
 
-      AbortButton = new Button { Text = "Cancel" };
-      AbortButton.Click += (sender, e) => Close(DialogResult.Cancel);
-
-      var button_layout = new TableLayout
+      var hello_layout = new TableLayout
       {
         Padding = new Padding(5, 10, 5, 5),
         Spacing = new Size(5, 5),
         Rows = { new TableRow(null, hello_button, null) }
       };
 
-      var defaults_layout = new TableLayout
+      var close_layout = new TableLayout
       {
         Padding = new Padding(5, 10, 5, 5),
         Spacing = new Size(5, 5),
-        Rows = { new TableRow(null, DefaultButton, AbortButton, null) }
+        Rows = { new TableRow(null, close_button, null) }
       };
 
       Content = new TableLayout
@@ -42,8 +41,8 @@ namespace SampleEto.Views
         Spacing = new Size(5, 5),
         Rows =
         {
-          new TableRow(button_layout),
-          new TableRow(defaults_layout)
+          new TableRow(hello_layout),
+          new TableRow(close_layout)
         }
       };
     }

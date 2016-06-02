@@ -1,15 +1,15 @@
-﻿namespace SampleEto.Commands
+﻿namespace SampleCsEto.Commands
 {
   [System.Runtime.InteropServices.Guid("9cac6db3-33a3-4a76-82ca-003d7e90b2db")]
-  public class SampleEtoPanelCommand : Rhino.Commands.Command
+  public class SampleCsEtoPanelCommand : Rhino.Commands.Command
   {
-    public SampleEtoPanelCommand()
+    public SampleCsEtoPanelCommand()
     {
-      Rhino.UI.Panels.RegisterPanel(PlugIn, typeof(Views.SampleEtoPanel), "Sample", Properties.Resources.SampleEtoPanel);
+      Rhino.UI.Panels.RegisterPanel(PlugIn, typeof(Views.SampleCsEtoPanel), "Sample", Properties.Resources.SampleCsEtoPanel);
       Instance = this;
     }
 
-    public static SampleEtoPanelCommand Instance
+    public static SampleCsEtoPanelCommand Instance
     {
       get;
       private set;
@@ -17,12 +17,12 @@
 
     public override string EnglishName
     {
-      get { return "SampleEtoPanel"; }
+      get { return "SampleCsEtoPanel"; }
     }
 
     protected override Rhino.Commands.Result RunCommand(Rhino.RhinoDoc doc, Rhino.Commands.RunMode mode)
     {
-      var panel_id = Views.SampleEtoPanel.PanelId;
+      var panel_id = Views.SampleCsEtoPanel.PanelId;
       var visible = Rhino.UI.Panels.IsPanelVisible(panel_id);
 
       var prompt = (visible)

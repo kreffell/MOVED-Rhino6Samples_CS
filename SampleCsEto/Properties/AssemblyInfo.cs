@@ -18,11 +18,11 @@ using Rhino.PlugIns;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SampleEto")] // Plug-In title is extracted from this
+[assembly: AssemblyTitle("SampleCsEto")] // Plug-In title is extracted from this
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert McNeel & Associates")]
-[assembly: AssemblyProduct("SampleEto")]
+[assembly: AssemblyProduct("SampleCsEto")]
 [assembly: AssemblyCopyright("Copyright © 2016, Robert McNeel & Associates")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

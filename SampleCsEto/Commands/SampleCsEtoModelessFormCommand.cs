@@ -3,15 +3,15 @@ using Rhino;
 using Rhino.Commands;
 using Rhino.UI;
 
-namespace SampleEto.Commands
+namespace SampleCsEto.Commands
 {
   [System.Runtime.InteropServices.Guid("5ae77c74-9bb9-4bea-93eb-8ee7c7838167")]
-  public class SampleEtoModelessFormCommand : Command
+  public class SampleCsEtoModelessFormCommand : Command
   {
     /// <summary>
     /// Form accessor
     /// </summary>
-    private Views.SampleEtoModelessForm Form
+    private Views.SampleCsEtoModelessForm Form
     {
       get;
       set;
@@ -19,14 +19,14 @@ namespace SampleEto.Commands
 
     public override string EnglishName
     {
-      get { return "SampleEtoModelessForm"; }
+      get { return "SampleCsEtoModelessForm"; }
     }
 
     protected override Result RunCommand(RhinoDoc doc, RunMode mode)
     {
       if (null == Form)
       {
-        Form = new Views.SampleEtoModelessForm { Owner = RhinoEtoApp.MainWindow };
+        Form = new Views.SampleCsEtoModelessForm { Owner = RhinoEtoApp.MainWindow };
         Form.RestorePosition();
         Form.Closed += OnFormClosed;
         Form.Show();

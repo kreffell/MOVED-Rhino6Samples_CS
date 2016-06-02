@@ -8,8 +8,8 @@
     <ProjectGuid>{CD962975-5E0A-4BB7-AF01-ABD4A9E18AAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SampleEto</RootNamespace>
-    <AssemblyName>SampleEto</AssemblyName>
+    <RootNamespace>SampleCsEto</RootNamespace>
+    <AssemblyName>SampleCsEto</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -52,31 +52,31 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SampleEtoCommand.cs" />
-    <Compile Include="Commands\SampleEtoModalDialogCommand.cs" />
-    <Compile Include="Commands\SampleEtoModelessFormCommand.cs" />
-    <Compile Include="Commands\SampleEtoPanelCommand.cs" />
-    <Compile Include="Commands\SampleEtoSemiModalDialogCommand.cs" />
+    <Compile Include="Commands\SampleCsEtoCommand.cs" />
+    <Compile Include="Commands\SampleCsEtoModalDialogCommand.cs" />
+    <Compile Include="Commands\SampleCsEtoModelessFormCommand.cs" />
+    <Compile Include="Commands\SampleCsEtoPanelCommand.cs" />
+    <Compile Include="Commands\SampleCsEtoSemiModalDialogCommand.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SampleEtoPlugIn.cs" />
+    <Compile Include="SampleCsEtoPlugIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\SampleEtoModalDialog.cs" />
-    <Compile Include="Views\SampleEtoModelessForm.cs" />
-    <Compile Include="Views\SampleEtoOptionsPage.cs" />
-    <Compile Include="Views\SampleEtoPanel.cs" />
-    <Compile Include="Views\SampleEtoPropertiesPage.cs" />
-    <Compile Include="Views\SampleEtoSemiModalDialog.cs" />
+    <Compile Include="Views\SampleCsEtoModalDialog.cs" />
+    <Compile Include="Views\SampleCsEtoModelessForm.cs" />
+    <Compile Include="Views\SampleCsEtoOptionsPage.cs" />
+    <Compile Include="Views\SampleCsEtoPanel.cs" />
+    <Compile Include="Views\SampleCsEtoPropertiesPage.cs" />
+    <Compile Include="Views\SampleCsEtoSemiModalDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\SampleEtoPanel.ico" />
+    <EmbeddedResource Include="Resources\SampleCsEtoPanel.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,16 +2,16 @@
 using Rhino;
 using Rhino.UI;
 
-namespace SampleEto
+namespace SampleCsEto
 {
-  public class SampleEtoPlugIn : Rhino.PlugIns.PlugIn
+  public class SampleCsEtoPlugIn : Rhino.PlugIns.PlugIn
   {
-    public SampleEtoPlugIn()
+    public SampleCsEtoPlugIn()
     {
       Instance = this;
     }
 
-    public static SampleEtoPlugIn Instance
+    public static SampleCsEtoPlugIn Instance
     {
       get;
       private set;
@@ -19,19 +19,19 @@ namespace SampleEto
 
     protected override void DocumentPropertiesDialogPages(RhinoDoc doc, List<OptionsDialogPage> pages)
     {
-      var page = new Views.SampleEtoOptionsPage();
+      var page = new Views.SampleCsEtoOptionsPage();
       pages.Add(page);
     }
 
     protected override void OptionsDialogPages(List<OptionsDialogPage> pages)
     {
-      var page = new Views.SampleEtoOptionsPage();
+      var page = new Views.SampleCsEtoOptionsPage();
       pages.Add(page);
     }
 
     protected override void ObjectPropertiesPages(List<ObjectPropertiesPage> pages)
     {
-      var page = new Views.SampleEtoPropertiesPage();
+      var page = new Views.SampleCsEtoPropertiesPage();
       pages.Add(page);
     }
   }

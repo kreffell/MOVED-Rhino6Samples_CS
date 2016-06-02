@@ -2,33 +2,33 @@
 using Eto.Forms;
 using Rhino.UI;
 
-namespace SampleEto.Views
+namespace SampleCsEto.Views
 {
   /// <summary>
   /// Required class GUID, used as the panel Id
   /// </summary>
   [System.Runtime.InteropServices.Guid("0E7780CA-F004-4AE7-B918-19E68BF7C7C9")]
-  public class SampleEtoPanel : Panel, IPanel
+  public class SampleCsEtoPanel : Panel, IPanel
   {
     /// <summary>
-    /// Provide easy access to the SampleEtoPanel.GUID
+    /// Provide easy access to the SampleCsEtoPanel.GUID
     /// </summary>
     public static System.Guid PanelId
     {
-      get { return typeof(SampleEtoPanel).GUID; }
+      get { return typeof(SampleCsEtoPanel).GUID; }
     }
     /// <summary>
     /// Provide easy access to the panel, this will be null until the panel has
     /// been opened at least once.
     /// </summary>
-    public static SampleEtoPanel Panel
+    public static SampleCsEtoPanel Panel
     {
-      get { return (Panels.GetPanel(PanelId) as SampleEtoPanel); }
+      get { return (Panels.GetPanel(PanelId) as SampleCsEtoPanel); }
     }
     /// <summary>
     /// Required public constructor with NO parameters
     /// </summary>
-    public SampleEtoPanel(uint documentSerialNumber)
+    public SampleCsEtoPanel(uint documentSerialNumber)
     {
       m_document_sn = documentSerialNumber;
 

@@ -4,11 +4,11 @@ using Rhino.Geometry;
 using Rhino.Input;
 using Rhino.UI;
 
-namespace SampleEto.Views
+namespace SampleCsEto.Views
 {
-  class SampleEtoSemiModalDialog : Dialog<DialogResult>
+  class SampleCsEtoSemiModalDialog : Dialog<DialogResult>
   {
-    public SampleEtoSemiModalDialog()
+    public SampleCsEtoSemiModalDialog()
     {
       Padding = new Padding(5);
       Resizable = false;
