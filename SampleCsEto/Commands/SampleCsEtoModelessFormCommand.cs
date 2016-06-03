@@ -5,7 +5,6 @@ using Rhino.UI;
 
 namespace SampleCsEto.Commands
 {
-  [System.Runtime.InteropServices.Guid("5ae77c74-9bb9-4bea-93eb-8ee7c7838167")]
   public class SampleCsEtoModelessFormCommand : Command
   {
     /// <summary>

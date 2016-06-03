@@ -358,9 +358,6 @@ namespace SampleCsCommands
     /// <param name="brep">The Brep</param>
     /// <param name="si">Index of 3d surface</param>
     /// <param name="sDir">Orientation of surface with respect to Brep</param>
-    /// <param name="v0">Index of the A corner vertex</param>
-    /// <param name="v1">Index of the B corner vertex</param>
-    /// <param name="v2">Index of the C corner vertex</param>
     /// <param name="e0">Index of first edge</param>
     /// <param name="e0Dir">Orientation of edge</param>
     /// <param name="e1">Index of second edge</param>
@@ -371,9 +368,6 @@ namespace SampleCsCommands
         Brep brep,
         int si,
         int sDir,
-        int v0, 
-        int v1,
-        int v2,
         int e0,
         int e0Dir,
         int e1,
@@ -407,7 +401,6 @@ namespace SampleCsCommands
         brep,
         ABC_i,   // Index of face
         +1,      // orientation of surface with respect to surface
-        A, B, C, // Indices of vertices
         AB, +1,  // Side edge and its orientation with respect to to the trimming curve (AB)
         BC, +1,  // Side edge and its orientation with respect to to the trimming curve (BC)
         AC, -1   // Side edge and its orientation with respect to to the trimming curve (AC)

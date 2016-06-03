@@ -20,8 +20,7 @@ namespace SampleCsCommands
       const int u_cv_count = 3;
       const int v_cv_count = 5;
       
-      var i = 0;
-      var j = 0;
+      int i, j;
 
       // The knot vectors do NOT have the 2 superfluous knots
       // at the start and end of the knot vector.  If you are

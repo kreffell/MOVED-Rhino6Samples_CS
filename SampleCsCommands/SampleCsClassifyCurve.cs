@@ -379,7 +379,7 @@ namespace SampleCsCommands
 
       // Test for self-intersection.
       CurveIntersections intesections = Intersection.CurveSelf(curve, m_tolerance);
-      bIntersect = (intesections.Count > 0);
+      bIntersect = intesections.Count > 0;
 
       // If the curve is not closed, no reason to continue...
       if (!bClosed)

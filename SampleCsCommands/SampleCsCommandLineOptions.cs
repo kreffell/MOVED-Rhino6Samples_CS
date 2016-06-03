@@ -37,7 +37,7 @@ namespace SampleCsCommands
 
       for (; ; )
       {
-        Rhino.Input.GetResult res = go.GetMultiple(1, 0);
+        var res = go.GetMultiple(1, 0);
 
         if (res == Rhino.Input.GetResult.Option)
         {
@@ -46,7 +46,7 @@ namespace SampleCsCommands
         }
 
         else if (res != Rhino.Input.GetResult.Object)
-          return Rhino.Commands.Result.Cancel;
+          return Result.Cancel;
 
         if (go.ObjectsWerePreselected)
         {
@@ -79,11 +79,11 @@ namespace SampleCsCommands
       integer1 = optionInteger1.CurrentValue;
       integer2 = optionInteger2.CurrentValue;
 
-      Rhino.RhinoApp.WriteLine("Select object count = {0}", objectCount);
-      Rhino.RhinoApp.WriteLine("Value of integer1 = {0}", integer1);
-      Rhino.RhinoApp.WriteLine("Value of integer2 = {0}", integer2);
+      RhinoApp.WriteLine("Select object count = {0}", objectCount);
+      RhinoApp.WriteLine("Value of integer1 = {0}", integer1);
+      RhinoApp.WriteLine("Value of integer2 = {0}", integer2);
 
-      return Rhino.Commands.Result.Success;
+      return Result.Success;
     }
   }
 }
