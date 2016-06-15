@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsEto", "SampleCsEto\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsWinForms", "SampleCsWinForms\SampleCsWinForms.csproj", "{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsEventWatcher", "SampleCsEventWatcher\SampleCsEventWatcher.csproj", "{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,8 +27,12 @@ Global
 		{CD962975-5E0A-4BB7-AF01-ABD4A9E18AAC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2DC9CC-D363-4978-9EB6-6677E8C7800F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
