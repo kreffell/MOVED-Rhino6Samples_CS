@@ -9,8 +9,8 @@ namespace SampleCsCommands
 {
   public class SampleCsDrawTextConduit : DisplayConduit
   {
-    const int X_GAP = 4; // pixels
-    const int Y_GAP = 4; // pixels
+    const int X_GAP = 8; // pixels
+    const int Y_GAP = 12; // pixels
 
     protected override void DrawForeground(DrawEventArgs e)
     {
