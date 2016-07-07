@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsWinForms", "SampleC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCsEventWatcher", "SampleCsEventWatcher\SampleCsEventWatcher.csproj", "{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCollapsibleSectionETOUI", "SampleCollapsibleSectionETO_UI\SampleCollapsibleSectionETOUI.csproj", "{D36880D5-3106-4D36-A9AB-E446E5C5781D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C46E6928-A0E4-46D7-9382-350AF2BD1AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36880D5-3106-4D36-A9AB-E446E5C5781D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36880D5-3106-4D36-A9AB-E446E5C5781D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36880D5-3106-4D36-A9AB-E446E5C5781D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36880D5-3106-4D36-A9AB-E446E5C5781D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
