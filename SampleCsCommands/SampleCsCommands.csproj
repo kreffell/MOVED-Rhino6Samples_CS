@@ -70,6 +70,7 @@
     <Compile Include="SampleCsIntersectCurves.cs" />
     <Compile Include="SampleCsIntersectCurveSelf.cs" />
     <Compile Include="SampleCsIntersectionMeshPolyline.cs" />
+    <Compile Include="SampleCsInvertSelected.cs" />
     <Compile Include="SampleCsLastCreatedObjects.cs" />
     <Compile Include="SampleCsMeshBox.cs" />
     <Compile Include="SampleCsNurbsCircle.cs" />
