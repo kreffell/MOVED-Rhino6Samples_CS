@@ -24,6 +24,8 @@ namespace CustomSunSections
     public CustomSunSectionsPlugIn()
     {
       Instance = this;
+
+      // Create two custom sections
       m_sun_section1 = new CustomSunSection1();
       m_sun_section2 = new CustomSunSection2();
     }
@@ -37,6 +39,8 @@ namespace CustomSunSections
     // You can override methods here to change the plug-in behavior on
     // loading and shut down, add options pages to the Rhino _Option command
     // and mantain plug-in wide options in a document.
+
+    // Return the custom sections that we want display in the sun dialog
     public override void SunCustomSections(List<ICollapsibleSection> sections)
     {
       sections.Add(m_sun_section1);
