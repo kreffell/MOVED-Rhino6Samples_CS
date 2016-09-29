@@ -48,8 +48,6 @@ namespace CustomSunSections
         Text = "This is the sun section 2",
         VerticalAlignment = VerticalAlignment.Center,
       };
-
-
     }
 
 
