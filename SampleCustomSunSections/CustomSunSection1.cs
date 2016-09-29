@@ -1,15 +1,15 @@
 ﻿using System;
+using Rhino.UI.Controls;
 using Eto.Forms;
 using Rhino.UI;
 
-namespace Project
+namespace CustomSunSections
 {
   ///<summary>
   /// The UI implementation of of Section one
   ///</summary>
-  public class SectionOne : Section
+  public class CustomSunSection1 : EtoCollapsibleSection
   {
-    private LocalizeStringPair m_caption;
     private Button m_button;
     private CheckBox m_checkbox;
     private Label m_button_lb;
@@ -17,11 +17,7 @@ namespace Project
     private Label m_button_clicks_lb;
     private Label m_checkbox_value_lb;
     private int m_clicks;
-
-    public override LocalizeStringPair Caption
-    {
-      get { return m_caption; }
-    }
+    private LocalizeStringPair m_caption;
 
     ///<summary>
     /// The Heigth of the section
@@ -30,16 +26,21 @@ namespace Project
     {
       get
       {
-        return this.Content.Height;
+        return 80;
       }
+    }
+
+    public override LocalizeStringPair Caption
+    {
+      get { return m_caption; }
     }
 
     ///<summary>
     /// Constructor for SectionOne
     ///</summary>
-    public SectionOne()
+    public CustomSunSection1()
     {
-      m_caption = new LocalizeStringPair("Section1", "Section1");
+      m_caption = new LocalizeStringPair("Custom Sun Section1", "Custom Sun Section1");
       InitializeComponents();
       InitializeLayout();
       RegisterControlEvents();
@@ -51,7 +52,7 @@ namespace Project
 
       m_button = new Button()
       {
-        Text = "Button1"
+        Text = "Button"
       };
 
       m_checkbox = new CheckBox();
