@@ -59,6 +59,13 @@
       <DependentUpon>SampleCsModalWinForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Commands\SampleCsWinFormsCommand.cs" />
+    <Compile Include="Forms\SampleCsOptionsPageDialog.cs" />
+    <Compile Include="Forms\SampleCsOptionsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SampleCsOptionsUserControl.Designer.cs">
+      <DependentUpon>SampleCsOptionsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SampleCsWinFormsPlugIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
