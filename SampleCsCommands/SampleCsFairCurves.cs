@@ -123,6 +123,7 @@ namespace SampleCsCommands
       var gp = new GetPoint();
       gp.SetCommandPrompt("Tolerance");
       gp.SetDefaultNumber(tolerance);
+      gp.AcceptNumber(true, false);
 
       for (;;)
       {
