@@ -65,6 +65,7 @@
     <Compile Include="SampleCsEmbedTextFile.cs" />
     <Compile Include="SampleCsExtrusion.cs" />
     <Compile Include="SampleCsFaceWithHole.cs" />
+    <Compile Include="SampleCsFairCurves.cs" />
     <Compile Include="SampleCsGetDirection.cs" />
     <Compile Include="SampleCsGroup.cs" />
     <Compile Include="SampleCsIntersectCurveLine.cs" />
