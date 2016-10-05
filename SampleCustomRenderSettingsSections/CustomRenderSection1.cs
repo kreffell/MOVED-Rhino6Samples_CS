@@ -8,7 +8,7 @@ namespace CustomRenderSections
   ///<summary>
   /// The UI implementation of of Section one
   ///</summary>
-  public class CustomRenderSection1 : EtoCollapsibleSection
+  public class CustomRenderSection1 : CustomSection
   {
     private Button m_button;
     private CheckBox m_checkbox;
