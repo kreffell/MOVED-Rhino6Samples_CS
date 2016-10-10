@@ -38,6 +38,12 @@ namespace SampleCustomRenderSettingsSections
       // Create two custom sections
       m_render_section1 = new CustomRenderSection1();
       m_render_section2 = new CustomRenderSection2();
+
+      // Create viewmodel to share same datasource for
+      // both sections
+      CustomRenderSettingsViewModel vm = new CustomRenderSettingsViewModel();
+      m_render_section1.SetViewModel(vm);
+      m_render_section2.SetViewModel(vm);
     }
 
     ///<summary>Gets the only instance of the SampleCustomRenderSettingsSectionsPlugIn plug-in.</summary>
