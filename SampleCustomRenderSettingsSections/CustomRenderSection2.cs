@@ -111,8 +111,10 @@ namespace CustomRenderSections
     {
       /* Data in Model has changed... */
 
-      // Example code  to read IntValue when the value 
-      // HasFocus changed 
+      // Example code  to read CheckBoxValue when the value 
+      // has changed. However this is not needed as we use ETO's
+      // direct binding in the SetViewModel function
+
       //if (e.PropertyName.CompareTo("CheckBoxValue") == 0)
       //{
       //  bool data_value = ViewModel.CheckBoxValue;
