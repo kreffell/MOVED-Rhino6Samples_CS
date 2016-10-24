@@ -58,31 +58,25 @@ namespace SampleCsCommands
       PrintColor("Window color 3", AppearanceSettings.GetPaintColor(PaintColor.HotStart));
       PrintColor("Window border", AppearanceSettings.GetPaintColor(PaintColor.NormalBorder));
       PrintColor("Window text", AppearanceSettings.GetPaintColor(PaintColor.TextEnabled));
-      PrintNoColor("Active viewport title");
-      PrintNoColor("Inactive viewport title");
+      PrintColor("Active viewport title", AppearanceSettings.GetPaintColor(PaintColor.ActiveViewportTitle));
+      PrintColor("Inactive viewport title", AppearanceSettings.GetPaintColor(PaintColor.InactiveViewportTitle));
 
       Print("Widget colors");
-      PrintNoColor("U-axis");
-      PrintNoColor("V-axis");
-      PrintNoColor("W-axis");
+      PrintColor("U-axis", AppearanceSettings.GetWidgetColor(WidgetColor.UAxisColor));
+      PrintColor("V-axis", AppearanceSettings.GetWidgetColor(WidgetColor.VAxisColor));
+      PrintColor("W-axis", AppearanceSettings.GetWidgetColor(WidgetColor.WAxisColor));
 
       return Result.Success;
     }
 
-    protected void Print(string label)
+    private static void Print(string label)
     {
       RhinoApp.WriteLine(label);
     }
 
-    protected void PrintColor(string label, Color color)
+    private static void PrintColor(string label, Color color)
     {
       RhinoApp.WriteLine("\t{0} - {1}", label, color.Name);
     }
-
-    protected void PrintNoColor(string label)
-    {
-      RhinoApp.WriteLine("\t{0} - not available", label);
-    }
-
   }
 }
