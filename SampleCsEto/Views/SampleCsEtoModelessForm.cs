@@ -3,6 +3,10 @@ using Eto.Forms;
 
 namespace SampleCsEto.Views
 {
+  /// <summary>
+  /// Warning! Modelers forms are not currently supported on Mac, you should use
+  /// Panels for cross platform mode-less UI.
+  /// </summary>
   class SampleCsEtoModelessForm : Form
   {
     public SampleCsEtoModelessForm()
