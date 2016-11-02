@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomSection.cs" />
     <Compile Include="CustomSunSection2.cs" />
     <Compile Include="CustomSunSectionsCommand.cs" />
     <Compile Include="CustomSunSectionsPlugIn.cs" />

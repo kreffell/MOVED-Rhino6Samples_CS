@@ -8,7 +8,7 @@ namespace CustomSunSections
   ///<summary>
   /// The UI implementation of of Section one
   ///</summary>
-  public class CustomSunSection1 : EtoCollapsibleSection
+  public class CustomSunSection1 : CustomSection
   {
     private Button m_button;
     private CheckBox m_checkbox;

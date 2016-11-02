@@ -8,7 +8,7 @@ namespace CustomSunSections
   ///<summary>
   /// The UI implementation of of Section one
   ///</summary>
-  public class CustomSunSection2 : EtoCollapsibleSection
+  public class CustomSunSection2 : CustomSection
   {
     private Label m_sun_section2_label;
     private LocalizeStringPair m_caption;
