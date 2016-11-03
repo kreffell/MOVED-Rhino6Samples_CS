@@ -13,18 +13,8 @@ namespace SampleCsEto.Views
     /// <summary>
     /// Provide easy access to the SampleCsEtoPanel.GUID
     /// </summary>
-    public static System.Guid PanelId
-    {
-      get { return typeof(SampleCsEtoPanel).GUID; }
-    }
-    /// <summary>
-    /// Provide easy access to the panel, this will be null until the panel has
-    /// been opened at least once.
-    /// </summary>
-    public static SampleCsEtoPanel Panel
-    {
-      get { return (Panels.GetPanel(PanelId) as SampleCsEtoPanel); }
-    }
+    public static System.Guid PanelId => typeof(SampleCsEtoPanel).GUID;
+
     /// <summary>
     /// Required public constructor with NO parameters
     /// </summary>
@@ -40,20 +30,19 @@ namespace SampleCsEto.Views
       var child_button = new Button { Text = "Child Dialog..." };
       child_button.Click += (sender, e) => OnChildButton();
 
-      m_document_sn_lable = new Label() {Text = $"Document serial number: {documentSerialNumber}"};
+      var document_sn_label = new Label() {Text = $"Document serial number: {documentSerialNumber}"};
 
       var layout = new DynamicLayout { DefaultSpacing = new Size(5, 5), Padding = new Padding(10) };
       layout.AddSeparateRow(hello_button, null);
       layout.AddSeparateRow(child_button, null);
-      layout.AddSeparateRow(m_document_sn_lable, null);
+      layout.AddSeparateRow(document_sn_label, null);
       layout.Add(null);
       Content = layout;
     }
 
-    private readonly Label m_document_sn_lable;
     private readonly uint m_document_sn;
 
-    public string Title { get; private set; }
+    public string Title { get; }
 
     /// <summary>
     /// Example of proper way to display a message box
@@ -78,7 +67,7 @@ namespace SampleCsEto.Views
     }
 
     #region IPanel methods
-    public void PanelShown(uint documentSerialNumber)
+    public void PanelShown(uint documentSerialNumber, ShowPanelReason reason)
     {
       // Called when the panel tab is made visible, in Mac Rhino this will happen
       // for a document panel when a new document becomes active, the previous
@@ -86,7 +75,7 @@ namespace SampleCsEto.Views
       Rhino.RhinoApp.WriteLine($"Panel shown for document {documentSerialNumber}, this serial number {m_document_sn} should be the same");
     }
 
-    public void PanelHidden(uint documentSerialNumber)
+    public void PanelHidden(uint documentSerialNumber, ShowPanelReason reason)
     {
       // Called when the panel tab is hidden, in Mac Rhino this will happen
       // for a document panel when a new document becomes active, the previous
