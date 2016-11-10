@@ -272,6 +272,23 @@ namespace SampleCustomLightManager
     {
       return m_render_uuid;
     }
+
+    // ToDo: The Solo functionality is not yet implemented in the Sample project
+    public override bool SetLightSolo(RhinoDoc doc, Guid uuid_light, bool bSolo)
+    {
+      return false;
+    }
+
+    public override bool GetLightSolo(RhinoDoc doc, Guid uuid_light)
+    {
+      return false;
+    }
+
+    public override int LightsInSoloStorage(RhinoDoc doc)
+    {
+      return 0;
+    }
+    // ToDo: End
   }
 
   public class CustomLight : Rhino.Geometry.Light
