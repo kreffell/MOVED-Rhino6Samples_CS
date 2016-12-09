@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCustomLightManager", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleViewportPropertiesETOUI", "SampleViewportPropertiesETOUI\SampleViewportPropertiesETOUI.csproj", "{6ABD08AA-2A75-41BB-8A29-7F4F92259AC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleRdkMaterialAutoUI", "SampleRdkMaterialAutoUI\SampleRdkMaterialAutoUI.csproj", "{3285F192-ECAC-40EE-A989-0930756D8F41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{6ABD08AA-2A75-41BB-8A29-7F4F92259AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ABD08AA-2A75-41BB-8A29-7F4F92259AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ABD08AA-2A75-41BB-8A29-7F4F92259AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3285F192-ECAC-40EE-A989-0930756D8F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3285F192-ECAC-40EE-A989-0930756D8F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3285F192-ECAC-40EE-A989-0930756D8F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3285F192-ECAC-40EE-A989-0930756D8F41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
