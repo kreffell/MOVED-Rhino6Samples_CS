@@ -20,16 +20,6 @@ namespace SampleRdkMaterialAutoUI
     public SampleRdkMaterial()
     {
 
-      // Visible fields in the section
-      Fields.Add("bool", false, "Yes/No");
-      Fields.AddTextured("color", Rhino.Display.Color4f.White, "Color");
-
-      //Non visible fields to store texture on-ness and amount
-      Field field = Fields.Add("color-texture-on", true);
-      BindParameterToField("color", "texture-on", field, ChangeContexts.UI);
-
-      field = Fields.Add("color-texture-amount", 100.0);
-      BindParameterToField("color", "texture-amount", field, ChangeContexts.UI);
     }
 
     protected override void OnAddUserInterfaceSections()
@@ -54,6 +44,20 @@ namespace SampleRdkMaterialAutoUI
       using (var g = Graphics.FromImage(bitmap))
         g.Clear(Color.Red);
       return true;
+    }
+
+    private void InitializeFields()
+    {
+      // Visible fields in the section
+      Fields.Add("bool", false, "Yes/No");
+      Fields.AddTextured("color", Rhino.Display.Color4f.White, "Color");
+
+      //Non visible fields to store texture on-ness and amount
+      Field field = Fields.Add("color-texture-on", true);
+      BindParameterToField("color", "texture-on", field, ChangeContexts.UI);
+
+      field = Fields.Add("color-texture-amount", 100.0);
+      BindParameterToField("color", "texture-amount", field, ChangeContexts.UI);
     }
 
   }
