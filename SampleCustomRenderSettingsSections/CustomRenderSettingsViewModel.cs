@@ -2,50 +2,68 @@
 using System.Runtime.CompilerServices;
 using Rhino.DocObjects.Tables;
 
+using Rhino.UI.Controls;
+using Rhino.Render;
+
 
 namespace SampleCustomRenderSettingsSections
 {
-  public class CustomRenderSettingsViewModel : INotifyPropertyChanged
+  public class CustomRenderSettingsViewModel : CollapsibleSectionViewModel, INotifyPropertyChanged
   {
-
     public event PropertyChangedEventHandler PropertyChanged;
-    private DataSource m_data_source;
-    private bool m_model_to_viewmodel_update;
-    private bool m_check_box_value;
+
+    private RenderSettings RenderSettingsForRead()
+    {
+      return base.GetData(Rhino.UI.Controls.DataSource.ProviderIds.Settings, false) as RenderSettings;
+    }
+
+    private RenderSettings RenderSettingsForWrite()
+    {
+      return base.GetData(Rhino.UI.Controls.DataSource.ProviderIds.Settings, true) as RenderSettings;
+    }
+
+    private void CommitRenderSettings()
+    {
+      base.Commit(Rhino.UI.Controls.DataSource.ProviderIds.Settings);
+    }
 
     public bool CheckBoxValue
     {
       get
       {
-        return m_check_box_value;
+        var rs = RenderSettingsForRead();
+        return null!=rs ? rs.FlatShade : false;
       }
 
       set
       {
-        if (value != m_check_box_value)
+        if (value != CheckBoxValue)
         {
-          m_check_box_value = value;
-          OnPropertyChanged();
+          var rs = RenderSettingsForWrite();
+          if (rs != null)
+          {
+            rs.FlatShade = value;
+            CommitRenderSettings();
+            OnPropertyChanged();
+          }
         }
       }
     }
 
-    public CustomRenderSettingsViewModel()
+    public CustomRenderSettingsViewModel(ICollapsibleSection section)
+      : base(section)
     {
-      m_data_source = new DataSource();
       RegisterControlEvents();
     }
 
     private void RegisterControlEvents()
     {
-      m_data_source.DataChanged += new PropertyChangedEventHandler(ViewModelChanged);
-      m_model_to_viewmodel_update = false;
+      //m_data_source.DataChanged += new PropertyChangedEventHandler(ViewModelChanged);
     }
 
     private void UnRegisterControlEvents()
     {
-      m_data_source.DataChanged -= new PropertyChangedEventHandler(ViewModelChanged);
-      m_model_to_viewmodel_update = true;
+      //m_data_source.DataChanged -= new PropertyChangedEventHandler(ViewModelChanged);
     }
 
     void ViewModelChanged(object sender, PropertyChangedEventArgs e)
@@ -59,7 +77,7 @@ namespace SampleCustomRenderSettingsSections
 
       try
       {
-        CheckBoxValue = m_data_source.CheckBoxValue;
+        //CheckBoxValue = m_data_source.CheckBoxValue;
       }
       catch
       {
@@ -80,13 +98,13 @@ namespace SampleCustomRenderSettingsSections
       }
 
       //No updated to datasource if datasource -> viewmodel update
-      if (m_model_to_viewmodel_update) return;
+//if (m_model_to_viewmodel_update) return;
 
       // ViewModel -> DataSource
-      if (memberName.Equals("CheckBoxValue"))
-      {
-        m_data_source.CheckBoxValue = CheckBoxValue;
-      }
+     // if (memberName.Equals("CheckBoxValue"))
+      //{
+      //  m_data_source.CheckBoxValue = CheckBoxValue;
+      //}
     }
   }
 }
