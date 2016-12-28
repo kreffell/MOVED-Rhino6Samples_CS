@@ -14,6 +14,14 @@ namespace CustomRenderSections
     {
       get { return m_uuidPlugIn; }
     }
+    public virtual void OnViewModelActivated(object sender, EventArgs e)
+    {
+      DataContext = ViewModel;
+    }
 
+    public CustomSection()
+    {
+      ViewModelActivated += OnViewModelActivated;
+    }
   };
 }

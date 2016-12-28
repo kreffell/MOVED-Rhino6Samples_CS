@@ -22,7 +22,7 @@ namespace CustomRenderSections
     private int m_clicks;
     private LocalizeStringPair m_caption;
 
-    new public CustomRenderSettingsViewModel ViewModel
+    public CustomRenderSettingsViewModel CustomRenderSettingsViewModel
     {
       get
       {
@@ -95,12 +95,13 @@ namespace CustomRenderSections
 
       m_checkbox_value_lb = new Label()
       {
-        Text = "Value of checkbox",
+        Text = "Custom User Data",
         VerticalAlignment = VerticalAlignment.Center,
       };
 
       m_checkbox_lb.Text = m_checkbox.Checked.ToString();
       m_button_lb.Text = m_clicks.ToString();
+
     }
 
 
@@ -115,63 +116,65 @@ namespace CustomRenderSections
         Rows =
                 {
                     new TableRow(m_button_clicks_lb, m_button_lb, m_button),
-                    new TableRow(m_checkbox_value_lb, m_checkbox, m_checkbox_lb),
+                    new TableRow(m_checkbox_value_lb, m_checkbox, m_checkbox_lb)
                 }
       };
       Content = layout;
     }
 
-    public void SetViewModel(CustomRenderSettingsViewModel view_model)
-    {
-      ViewModel = view_model;
-
-      // Databinding
-      ViewModel.PropertyChanged += new PropertyChangedEventHandler(ViewModelChanged);
-      m_checkbox.Bind(m_checkOn => m_checkOn.Checked, ViewModel, (CustomRenderSettingsViewModel m) => m.CheckBoxValue);
-      // Get initial values for display
-      ViewModel.DisplayData();
-    }
-
-    void ViewModelChanged(object sender, PropertyChangedEventArgs e)
-    {
-      /* Data in Model has changed... */
-
-      // Example code  to read CheckBoxValue when the value 
-      // has changed. However this is not needed as we use ETO's
-      // direct binding in the SetViewModel function
-       
-      //if (e.PropertyName.CompareTo("CheckBoxValue") == 0)
-      //{
-      //  bool data_value = ViewModel.CheckBoxValue;
-      //}
-    }
-
     private void RegisterControlEvents()
     {
+      DataChanged += OnDataChanged;
+
       m_checkbox.CheckedChanged += OnCheckedChanged;
       m_button.Click += OnButtonClick;
     }
 
     private void UnRegisterControlEvents()
     {
-      m_checkbox.MouseDoubleClick -= OnCheckedChanged;
+      DataChanged += OnDataChanged;
+
+      m_checkbox.CheckedChanged -= OnCheckedChanged;
       m_button.Click -= OnButtonClick;
     }
+
+
+    private void OnLoadComplete(object sender, EventArgs e)
+    {
+
+    }
+
+    public override void OnViewModelActivated(object sender, EventArgs e)
+    {
+      base.OnViewModelActivated(sender, e);
+
+      // Setup the viewmodel for the section
+      if (CustomRenderSettingsViewModel == null)
+        CustomRenderSettingsViewModel = new CustomRenderSettingsViewModel(this);
+    }
+
+    void OnDataChanged(object sender, Rhino.UI.Controls.DataSource.EventArgs args)
+    {
+      m_checkbox.CheckedChanged -= OnCheckedChanged;
+      m_checkbox.Checked = CustomRenderSettingsViewModel.CheckBoxValue;
+      m_checkbox.CheckedChanged += OnCheckedChanged;
+    }
+
+    private void DisplayData()
+    {
+      m_checkbox.Checked = CustomRenderSettingsViewModel.CheckBoxValue;
+    }
+
 
     private void OnCheckedChanged(object sender, EventArgs e)
     {
       m_checkbox_lb.Text = m_checkbox.Checked.ToString();
-
-      // We could change the CheckBoxValue (UI -> ViewModel -> DataSrouce)
-      // here, however as we have used two way binding in the SetViewModel function
-      // we do not need to update the value here. An example code is still shown
-      // below
       
-      //if (m_checkbox.Checked != null)
-      //{
-      //  bool checked_state = (bool)m_checkbox.Checked;
-      //  ViewModel.CheckBoxValue = checked_state;
-      //}
+      if (m_checkbox.Checked != null)
+      {
+        bool checked_state = (bool)m_checkbox.Checked;
+        CustomRenderSettingsViewModel.CheckBoxValue = checked_state;
+      }
     }
 
     private void OnButtonClick(object sender, EventArgs e)

@@ -1,74 +1,68 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Rhino.DocObjects.Tables;
+using Rhino.UI.Controls;
+using Rhino.Render;
+using Rhino.Collections;
 
 
 namespace SampleCustomRenderSettingsSections
 {
-  public class CustomRenderSettingsViewModel : INotifyPropertyChanged
+  public class CustomRenderSettingsViewModel : CollapsibleSectionViewModel, INotifyPropertyChanged
   {
-
     public event PropertyChangedEventHandler PropertyChanged;
-    private DataSource m_data_source;
-    private bool m_model_to_viewmodel_update;
-    private bool m_check_box_value;
 
-    public bool CheckBoxValue
+    private RenderSettings RenderSettingsForRead()
+    {
+      return GetData(Rhino.UI.Controls.DataSource.ProviderIds.RenderSettings, false, true) as RenderSettings;
+    }
+
+    private RenderSettings RenderSettingsForWrite()
+    {
+      return GetData(Rhino.UI.Controls.DataSource.ProviderIds.RenderSettings, true, true) as RenderSettings;
+    }
+
+    private void CommitRenderSettings()
+    {
+      Commit(Rhino.UI.Controls.DataSource.ProviderIds.RenderSettings);
+    }
+
+    // The CheckBoxValue is a custom boolean User Data 
+    // value for Render Settings
+    public bool? CheckBoxValue
     {
       get
       {
-        return m_check_box_value;
+        var rs = RenderSettingsForRead();
+
+        bool value = false;
+        ArchivableDictionary userdata = rs.UserDictionary;
+        if (!userdata.TryGetBool("BoolValue", out value))
+          return false;
+
+        return value; 
       }
 
       set
       {
-        if (value != m_check_box_value)
+        if (value != CheckBoxValue)
         {
-          m_check_box_value = value;
-          OnPropertyChanged();
+          if (value != null)
+          {
+            var rs = RenderSettingsForRead();
+
+            ArchivableDictionary userdata = rs.UserDictionary;
+            userdata.Set("BoolValue", (bool)value);
+
+            OnPropertyChanged();
+          }
         }
       }
     }
 
-    public CustomRenderSettingsViewModel()
+    public CustomRenderSettingsViewModel(ICollapsibleSection section)
+      : base(section)
     {
-      m_data_source = new DataSource();
-      RegisterControlEvents();
-    }
-
-    private void RegisterControlEvents()
-    {
-      m_data_source.DataChanged += new PropertyChangedEventHandler(ViewModelChanged);
-      m_model_to_viewmodel_update = false;
-    }
-
-    private void UnRegisterControlEvents()
-    {
-      m_data_source.DataChanged -= new PropertyChangedEventHandler(ViewModelChanged);
-      m_model_to_viewmodel_update = true;
-    }
-
-    void ViewModelChanged(object sender, PropertyChangedEventArgs e)
-    {
-      DisplayData();
-    }
-
-    public void DisplayData()
-    {
-      UnRegisterControlEvents();
-
-      try
-      {
-        CheckBoxValue = m_data_source.CheckBoxValue;
-      }
-      catch
-      {
-        // Some problem with datareading.
-      }
-      finally
-      {
-        RegisterControlEvents();
-      }
+      
     }
 
     void OnPropertyChanged([CallerMemberName] string memberName = null)
@@ -78,15 +72,7 @@ namespace SampleCustomRenderSettingsSections
       {
         PropertyChanged(this, new PropertyChangedEventArgs(memberName));
       }
-
-      //No updated to datasource if datasource -> viewmodel update
-      if (m_model_to_viewmodel_update) return;
-
-      // ViewModel -> DataSource
-      if (memberName.Equals("CheckBoxValue"))
-      {
-        m_data_source.CheckBoxValue = CheckBoxValue;
-      }
     }
+
   }
 }
