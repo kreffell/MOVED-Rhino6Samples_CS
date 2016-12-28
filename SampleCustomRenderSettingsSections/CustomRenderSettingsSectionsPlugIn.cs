@@ -29,23 +29,14 @@ namespace SampleCustomRenderSettingsSections
     private Guid m_uuidRenderSettingsSection_FocalBlur = new Guid("8035e79f-0b16-4b2a-ba0f-e277eda7007d");
 
     private CustomRenderSection1 m_render_section1;
-    private CustomRenderSection2 m_render_section2;
 
     public CustomRenderSettingsSectionsPlugIn()
     {
       Instance = this;
 
-      // Create two custom sections
+      // Create custom section
       m_render_section1 = new CustomRenderSection1();
-      m_render_section2 = new CustomRenderSection2();
 
-      // Create viewmodel to share same datasource for
-      // both sections
-      var vm1 = new CustomRenderSettingsViewModel(m_render_section1);
-      m_render_section1.SetViewModel(vm1);
-
-      var vm2 = new CustomRenderSettingsViewModel(m_render_section2);
-      m_render_section2.SetViewModel(vm2);
     }
 
     ///<summary>Gets the only instance of the SampleCustomRenderSettingsSectionsPlugIn plug-in.</summary>
@@ -60,7 +51,6 @@ namespace SampleCustomRenderSettingsSections
     public override void RenderSettingsCustomSections(List<ICollapsibleSection> sections)
     {
       sections.Add(m_render_section1);
-      sections.Add(m_render_section2);
     }
 
     /// <summary>

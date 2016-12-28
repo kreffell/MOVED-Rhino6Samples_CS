@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Rhino.DocObjects.Tables;
-
 using Rhino.UI.Controls;
 using Rhino.Render;
+using Rhino.Collections;
 
 
 namespace SampleCustomRenderSettingsSections
@@ -14,36 +13,46 @@ namespace SampleCustomRenderSettingsSections
 
     private RenderSettings RenderSettingsForRead()
     {
-      return base.GetData(Rhino.UI.Controls.DataSource.ProviderIds.Settings, false) as RenderSettings;
+      return GetData(Rhino.UI.Controls.DataSource.ProviderIds.RenderSettings, false, true) as RenderSettings;
     }
 
     private RenderSettings RenderSettingsForWrite()
     {
-      return base.GetData(Rhino.UI.Controls.DataSource.ProviderIds.Settings, true) as RenderSettings;
+      return GetData(Rhino.UI.Controls.DataSource.ProviderIds.RenderSettings, true, true) as RenderSettings;
     }
 
     private void CommitRenderSettings()
     {
-      base.Commit(Rhino.UI.Controls.DataSource.ProviderIds.Settings);
+      Commit(Rhino.UI.Controls.DataSource.ProviderIds.RenderSettings);
     }
 
-    public bool CheckBoxValue
+    // The CheckBoxValue is a custom boolean User Data 
+    // value for Render Settings
+    public bool? CheckBoxValue
     {
       get
       {
         var rs = RenderSettingsForRead();
-        return null!=rs ? rs.FlatShade : false;
+
+        bool value = false;
+        ArchivableDictionary userdata = rs.UserDictionary;
+        if (!userdata.TryGetBool("BoolValue", out value))
+          return false;
+
+        return value; 
       }
 
       set
       {
         if (value != CheckBoxValue)
         {
-          var rs = RenderSettingsForWrite();
-          if (rs != null)
+          if (value != null)
           {
-            rs.FlatShade = value;
-            CommitRenderSettings();
+            var rs = RenderSettingsForRead();
+
+            ArchivableDictionary userdata = rs.UserDictionary;
+            userdata.Set("BoolValue", (bool)value);
+
             OnPropertyChanged();
           }
         }
@@ -53,40 +62,7 @@ namespace SampleCustomRenderSettingsSections
     public CustomRenderSettingsViewModel(ICollapsibleSection section)
       : base(section)
     {
-      RegisterControlEvents();
-    }
-
-    private void RegisterControlEvents()
-    {
-      //m_data_source.DataChanged += new PropertyChangedEventHandler(ViewModelChanged);
-    }
-
-    private void UnRegisterControlEvents()
-    {
-      //m_data_source.DataChanged -= new PropertyChangedEventHandler(ViewModelChanged);
-    }
-
-    void ViewModelChanged(object sender, PropertyChangedEventArgs e)
-    {
-      DisplayData();
-    }
-
-    public void DisplayData()
-    {
-      UnRegisterControlEvents();
-
-      try
-      {
-        //CheckBoxValue = m_data_source.CheckBoxValue;
-      }
-      catch
-      {
-        // Some problem with datareading.
-      }
-      finally
-      {
-        RegisterControlEvents();
-      }
+      
     }
 
     void OnPropertyChanged([CallerMemberName] string memberName = null)
@@ -96,15 +72,7 @@ namespace SampleCustomRenderSettingsSections
       {
         PropertyChanged(this, new PropertyChangedEventArgs(memberName));
       }
-
-      //No updated to datasource if datasource -> viewmodel update
-//if (m_model_to_viewmodel_update) return;
-
-      // ViewModel -> DataSource
-     // if (memberName.Equals("CheckBoxValue"))
-      //{
-      //  m_data_source.CheckBoxValue = CheckBoxValue;
-      //}
     }
+
   }
 }
