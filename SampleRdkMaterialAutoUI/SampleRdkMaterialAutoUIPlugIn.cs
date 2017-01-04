@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Rhino.PlugIns;
 
 namespace SampleRdkMaterialAutoUI
 {
@@ -16,21 +17,20 @@ namespace SampleRdkMaterialAutoUI
   /// attributes in AssemblyInfo.cs (you might need to click "Project" ->
   /// "Show All Files" to see it in the "Solution Explorer" window).</para>
   ///</summary>
-  public class SampleRdkMaterialAutoUIPlugIn : Rhino.PlugIns.RenderPlugIn
+  public class SampleRdkMaterialAutoUIPlugIn : Rhino.PlugIns.PlugIn
   {
-
-    //private static Guid m_render_plugin_id = new Guid("3285f192-ecac-40ee-a989-0930756d8f41");
-    SampleRenderContentSerializer m_rcs;
-    List<SampleRenderContentSerializer> m_rcs_list;
+    private SampleRenderContentSerializer m_rcs;
+    private static Guid m_plugin_id = new Guid("3285f192-ecac-40ee-a989-0930756d8f41");
 
     public SampleRdkMaterialAutoUIPlugIn()
     {
       Instance = this;
 
       // Create our custom serializer for the material (.sample files)
-      m_rcs_list = new List<SampleRenderContentSerializer>();
       m_rcs = new SampleRenderContentSerializer("sample", RenderContentKind.Material, true, true);
-      m_rcs_list.Add(m_rcs);
+
+      // Register Serializer
+      m_rcs.RegisterSerializer(m_plugin_id);
     }
 
     ///<summary>Gets the only instance of the SampleRdkMaterialAutoUIPlugIn plug-in.</summary>
@@ -43,17 +43,15 @@ namespace SampleRdkMaterialAutoUI
     // You can override methods here to change the plug-in behavior on
     // loading and shut down, add options pages to the Rhino _Option command
     // and mantain plug-in wide options in a document.
-
-    protected override IEnumerable<RenderContentSerializer> RenderContentSerializers()
+    
+    protected override LoadReturnCode OnLoad(ref string errorMessage)
     {
-      // Return our serializer to rdk
-      IEnumerable<RenderContentSerializer> sel = from a in m_rcs_list select a;
-      return sel;
+      base.OnLoad(ref errorMessage);
+
+      RenderContent.RegisterContent(this);
+
+      return LoadReturnCode.Success;
     }
 
-    protected override Result Render(RhinoDoc doc, RunMode mode, bool fastPreview)
-    {
-      return Result.Success;
-    }
   }
 }
