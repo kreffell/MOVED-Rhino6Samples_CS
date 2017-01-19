@@ -48,12 +48,16 @@ namespace SampleCustomRenderSettingsSections
         {
           if (value != null)
           {
-            var rs = RenderSettingsForRead();
+            using (var u = UndoHelper("Custom Render Section 1 BoolValue changed"))
+            {
+              var rs = RenderSettingsForWrite();
 
-            ArchivableDictionary userdata = rs.UserDictionary;
-            userdata.Set("BoolValue", (bool)value);
+              ArchivableDictionary userdata = rs.UserDictionary;
+              userdata.Set("BoolValue", (bool)value);
 
-            OnPropertyChanged();
+              CommitRenderSettings();
+              OnPropertyChanged();
+            }
           }
         }
       }
@@ -73,6 +77,5 @@ namespace SampleCustomRenderSettingsSections
         PropertyChanged(this, new PropertyChangedEventArgs(memberName));
       }
     }
-
   }
 }
