@@ -251,10 +251,66 @@ namespace SampleCustomLightManager
           Rhino.DocObjects.LightObject light_obj = doc.Lights[index];
           light_obj.Select(true);
           RhinoApp.RunScript("_-PropertiesPage _Light", true);
+          return true;
         }
-        return true;
       }
       return false;
+    }
+
+    /// <summary>
+    /// Creates a new group with the lights
+    /// </summary>
+    public override void GroupLights(RhinoDoc doc, ref LightArray light_array)
+    {
+      int selected = 0;
+      // Clear all selections
+      foreach (Rhino.DocObjects.RhinoObject obj in doc.Objects)
+      {
+        obj.Select(false);
+      }
+      // Select all lights to group
+      for (int i = 0; i < light_array.Count(); i++)
+      {
+        Rhino.Geometry.Light light = light_array.ElementAt(i);
+        int index = doc.Lights.Find(light.Id, true);
+        if (index > -1)
+        {
+          Rhino.DocObjects.LightObject light_obj = doc.Lights[index];
+          light_obj.Select(true);
+          selected++;
+        }
+      }
+
+      if (selected > 0)
+        RhinoApp.RunScript("_Group", true);
+    }
+
+    /// <summary>
+    /// UnGroups the lights
+    /// </summary>
+    public override void UnGroup(RhinoDoc doc, ref LightArray light_array)
+    {
+      int selected = 0;
+      // Clear all selections
+      foreach (Rhino.DocObjects.RhinoObject obj in doc.Objects)
+      {
+        obj.Select(false);
+      }
+      // Select all lights to group
+      for (int i = 0; i < light_array.Count(); i++)
+      {
+        Rhino.Geometry.Light light = light_array.ElementAt(i);
+        int index = doc.Lights.Find(light.Id, true);
+        if (index > -1)
+        {
+          Rhino.DocObjects.LightObject light_obj = doc.Lights[index];
+          light_obj.Select(true);
+          selected++;
+        }
+      }
+
+      if (selected > 0)
+        RhinoApp.RunScript("_UnGroup", true);
     }
 
     /// <summary>
